@@ -5,7 +5,7 @@ PROJET FINAL DEVOPS.
 
 
 
-# The "fil rouge" project is a final project that aims to make us use the technologies seen during the EAsytraining Bootcamp.
+# The "fil rouge" project is a final project that aims to make us use the technologies seen during the Easytraining Bootcamp.
 You will find below the complete statement provided by Eazytraing and the files I made to answer this statement
 
 
