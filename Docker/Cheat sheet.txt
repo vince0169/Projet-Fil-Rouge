@@ -1,0 +1,9 @@
+$ git clone https://github.com/sadofrazer/ic-webapp.git
+$ cd ic-webapp/
+$ vi releases.txt
+$ vi entrypoint.sh
+$ vi Dockerfile
+$ docker build -t ic-webapp:v1 .
+$ docker run --name test-ic-webapp -d -p 5000:8080 ic-webapp:v1
+
+Go to http://localhost:5000 to see the web application
