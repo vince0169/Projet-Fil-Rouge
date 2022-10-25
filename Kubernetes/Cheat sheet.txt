@@ -3,7 +3,7 @@ ic-webapp
 $ kubectl apply -f ic-webapp-namespace
 namespace/ic-webapp created
 
-Be careful of the IP values for ODOO_URL and PGADMIN_URL and do : 
+Be careful of the IP values for ODOO_URL and PGADMIN_URL and run : 
 $ kubectl apply -f ic-webapp-deployment
 
 $ kubectl apply -f ic-webapp-nodeport
@@ -12,7 +12,7 @@ $ kubectl apply -f ic-webapp-nodeport
 
 Postgres
 
-If doesn't exist create repository /data_k8s/postgres and change the access mode of this repository :
+If doesn't exist, create repository /data_k8s/postgres and change the access mode of this repository :
 $ mkdir /data_k8s/postgres
 $ chmod 777 -R /data_k8s/*
 
@@ -29,7 +29,7 @@ service/postgres created
 
 Odoo
 
-If doesn't exist create repositories /data_k8s/lib-odoo , /data_docker/config and /data_docker/addons and change the access mode of these repositories :
+If don't exist, create repositories /data_k8s/lib-odoo , /data_docker/config and /data_docker/addons and change the access mode of these repositories :
 $ mkdir /data_k8s/lib-odoo /data_docker/config /data_docker/addons
 $ chmod 777 -R /data_docker/*
 $ chmod 777 -R /data_k8s/*
@@ -54,7 +54,7 @@ service/odoo created
 
 PgAdmin
 
-If doesn't exist create repository /data_k8s/pgadmin4 and change the access mode of this repository :  
+If doesn't exist, create repository /data_k8s/pgadmin4 and change the access mode of this repository :  
 $ mkdir /data_k8s/pgadmin4
 $ chmod 777 -R /data_k8s/*
 
