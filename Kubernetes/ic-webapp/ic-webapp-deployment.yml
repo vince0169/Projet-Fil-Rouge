@@ -21,10 +21,11 @@ spec:
       - image: choco1992/ic-webapp:v1.0
         name: ic-webapp
         env:
+# Be careful of the value for ODOO_URL and PGADMIN_URL, the ip address can be of this form : http://10.244.0.0:30069/ or http://ip10-0-2-3-cdbqsov3l9agg4kmspe0-30069.direct.docker.labs.eazytraining.fr/ if you work directly on the eazytraining labs
         - name: ODOO_URL
-          value: http://10.244.0.0:30069/
+          value: http://ip10-0-2-3-cdbqsov3l9agg4kmspe0-30069.direct.docker.labs.eazytraining.fr/
         - name: PGADMIN_URL
-          value: http://10.244.0.0:30050/
+          value: http://ip10-0-2-3-cdbqsov3l9agg4kmspe0-30050.direct.docker.labs.eazytraining.fr/
         ports:
         - containerPort: 8080
           name: ic-webapp
