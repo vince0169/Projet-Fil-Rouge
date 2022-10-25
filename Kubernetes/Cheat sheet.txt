@@ -1,0 +1,77 @@
+ic-webapp
+
+$ kubectl apply -f ic-webapp-namespace
+namespace/ic-webapp created
+
+Be careful of the IP values for ODOO_URL and PGADMIN_URL and do : 
+$ kubectl apply -f ic-webapp-deployment
+
+$ kubectl apply -f ic-webapp-nodeport
+
+
+
+Postgres
+
+If doesn't exist create repository /data_k8s/postgres and change the access mode of this repository :
+$ mkdir /data_k8s/postgres
+$ chmod 777 -R /data_k8s/*
+
+$ kubectl apply -f postgres-secret
+secret/postgres created
+
+$ kubectl apply -f postgres-deployment
+deployment.apps/postgres created
+
+$ kubectl apply -f postgres-clusterip
+service/postgres created
+
+
+
+Odoo
+
+If doesn't exist create repositories /data_k8s/lib-odoo , /data_docker/config and /data_docker/addons and change the access mode of these repositories :
+$ mkdir /data_k8s/lib-odoo /data_docker/config /data_docker/addons
+$ chmod 777 -R /data_docker/*
+$ chmod 777 -R /data_k8s/*
+
+$ kubectl apply -f odoo-secret
+secret/odoo created
+
+$ kubectl apply -f odoo-pv
+persistentvolume/odoo-pv created
+
+$ kubectl apply -f odoo-pvc
+persistentvolumeclaim/odoo-pvc created
+
+
+$ kubectl apply -f odoo-deployment
+deployment.apps/odoo created
+
+$ kubectl apply -f odoo-nodeport
+service/odoo created
+
+
+
+PgAdmin
+
+If doesn't exist create repository /data_k8s/pgadmin4 and change the access mode of this repository :  
+$ mkdir /data_k8s/pgadmin4
+$ chmod 777 -R /data_k8s/*
+
+$ kubectl apply -f pg-admin-secret
+secret/pg-admin created
+
+$ kubectl apply -f pgadmin-pv
+persistentvolume/pgadmin-pv created
+
+$ kubectl apply -f pgadmin-pvc
+persistentvolumeclaim/pgadmin-pvc created
+
+$ kubectl apply -f pg-admin-deployment
+deployment.apps/pg-admin created
+
+$ kubectl apply -f pg_admin-nodeport
+service/pg-admin created
+
+$ kubectl apply -f pg-admin-configmap
+configmap/pgadmin-config created
