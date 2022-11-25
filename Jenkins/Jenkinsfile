@@ -56,7 +56,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                   curl -I http://ip10-0-0-3-ce09l05ovg30g96fmmtg-8000.direct.docker.labs.eazytraining.fr/ | grep -i "200"
+                   curl -I 172.16.0.1:8000 | grep -i "200"
                 '''
               }
            }
