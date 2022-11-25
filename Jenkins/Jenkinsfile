@@ -4,7 +4,7 @@ pipeline {
         APP_CONTAINER_PORT = "8080"
         DOCKERHUB_ID = "vince0169"
         DOCKERHUB_PASSWORD = credentials('dockerhub_password')
-        APP_EXPOSED_PORT = "90"
+        APP_EXPOSED_PORT = "5000"
     }
     agent none
     stages {
@@ -56,7 +56,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                   curl -I http://ip10-0-2-3-ce07tqlovg30g96fmmrg-90.direct.docker.labs.eazytraining.fr/ | grep -i "200"
+                   curl -I http://ip10-0-2-3-ce07tqlovg30g96fmmrg-5000.direct.docker.labs.eazytraining.fr/ | grep -i "200"
                 '''
               }
            }
