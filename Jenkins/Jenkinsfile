@@ -56,7 +56,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                   curl -I http://ip10-0-2-3-ce07tqlovg30g96fmmrg-80.direct.docker.labs.eazytraining.fr/ | grep -i "200"
+                   curl -I http://ip10-0-2-3-ce07tqlovg30g96fmmrg-80.direct.docker.labs.eazytraining.fr/ | grep -i "Odoo"
                 '''
               }
            }
