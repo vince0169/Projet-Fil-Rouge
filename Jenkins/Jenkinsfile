@@ -45,7 +45,7 @@ pipeline {
               sh '''
                   echo "Cleaning existing container if exist"
                   docker ps -a | grep -i $IMAGE_NAME && docker rm -f ${IMAGE_NAME}
-                  docker run --name ${IMAGE_NAME} -d -p $APP_EXPOSED_PORT:$APP_CONTAINER_PORT ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG
+                  docker run --name ${IMAGE_NAME} -d -p $APP_EXPOSED_PORT:$APP_CONTAINER_PORT -e PORT=8081  ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG
                   sleep 5
               '''
              }
@@ -56,7 +56,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                   curl -I 172.16.0.1:8000 | grep -i "200"
+                   curl -I http://localhost | grep -i "200"
                 '''
               }
            }
