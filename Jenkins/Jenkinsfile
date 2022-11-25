@@ -14,7 +14,9 @@ pipeline {
               script {
                 sh '''
                 pwd
-                docker build --no-cache -f ./sources/app/${DOCKERFILE_NAME} -t ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG ./sources/app'
+                cd Jenkins
+                ls
+                docker build --no-cache -f ${DOCKERFILE_NAME} -t ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG .
                 '''
               }
            }
@@ -43,7 +45,7 @@ pipeline {
               sh '''
                   echo "Cleaning existing container if exist"
                   docker ps -a | grep -i $IMAGE_NAME && docker rm -f ${IMAGE_NAME}
-                  docker run --name ${IMAGE_NAME} -d -p $APP_EXPOSED_PORT:$APP_CONTAINER_PORT  ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG
+                  docker run --name ${IMAGE_NAME} -d -p $APP_EXPOSED_PORT:$APP_CONTAINER_PORT ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG
                   sleep 5
               '''
              }
@@ -54,7 +56,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                   curl -I http://${HOST_IP}:${APP_EXPOSED_PORT} | grep -i "200"
+                   curl -I http://ip10-0-2-3-ce07tqlovg30g96fmmrg-80.direct.docker.labs.eazytraining.fr/ | grep -i "Odoo"
                 '''
               }
            }
